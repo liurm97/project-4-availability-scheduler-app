@@ -49,10 +49,6 @@ const EventForm = ({
   eventDates: (Date | undefined)[];
   eventId: number;
 }) => {
-  console.log("==========UpdateEventForm================");
-  console.log("previousAvailabilitiesDateTime", previousAvailabilitiesDateTime);
-  console.log("defaultSlots", defaultSlots);
-  console.log("dates", dates);
   const [isLoading, setIsLoading] = useState(false);
 
   // Define form.
@@ -70,7 +66,6 @@ const EventForm = ({
   // onSubmit handler that runs only when form is valid
   async function onSubmit(values: z.infer<typeof formSchema>) {
     setIsLoading(true);
-    // console.log(values);
     const updatedEvent = await updateEventAndDates(values, eventId);
     const userAvailabilityToUpdate = await prepareToUpdateAvailability(
       previousAvailabilitiesDateTime,
@@ -80,7 +75,6 @@ const EventForm = ({
     );
 
     await updateAvailability(userAvailabilityToUpdate, eventId);
-    // console.log(updatedEvent);
 
     // Reload current page using native web API
     window.location.reload();
