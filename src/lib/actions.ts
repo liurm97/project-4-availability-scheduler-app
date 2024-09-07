@@ -297,7 +297,6 @@ export async function createUser(respondentName: string, eventId: string) {
     .select("name, user_id");
 
   if (error) {
-    console.error("Error creating user", error);
     return "";
   }
   return { data };
@@ -315,7 +314,6 @@ export async function createAvailability(
     .select("timeslots, user_id, event_id");
 
   if (error) {
-    console.error("Error creating user", error);
     return "";
   }
   return { data };

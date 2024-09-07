@@ -43,7 +43,6 @@ const EventPage = async ({ params }: { params: { event: string } }) => {
     .eq("event_link", params.event);
 
   if (error) {
-    console.error("Error fetching data from Supabase", error);
   } else {
   }
   var dates: DateData[] = [];
@@ -53,7 +52,6 @@ const EventPage = async ({ params }: { params: { event: string } }) => {
     );
   } catch (err) {
     if (err instanceof TypeError) {
-      console.error("Error fetching data from Supabase", err);
     }
   }
   const endTime = dates[0].end_datetime;

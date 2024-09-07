@@ -15,7 +15,6 @@ const AddAvailabilityButton = () => {
           animate-pulse-awhile
           w-full h-12 lg:h-10"
           onClick={() => {
-            console.log("Clicked add availability");
             mode == "read" ? setMode("write") : setMode("read");
           }}
         >
