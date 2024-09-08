@@ -1,6 +1,11 @@
 import CreateEventForm from "@/components/eventform/CreateEventForm";
 import FAQ from "@/components/FAQ";
 import HeroTitle from "@/components/HeroTitle";
+
+// NextJS defaults to pre-rendering pages which may be the reason for the new Date() in CreateEventForm not updating
+// Manually override default behaviour and sets this page to dynamic page so that it loads the latest date on every load
+export const dynamic = "force-dynamic";
+
 export default async function HomePage() {
   return (
     <div className="bg-zinc-950 w-screen">
