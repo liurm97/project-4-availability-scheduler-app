@@ -37,7 +37,9 @@ dayjs.extend(timezone);
 const CreateEventForm = () => {
   const localTimeZone = dayjs.tz.guess();
   const localTodayDate = dayjs().tz(localTimeZone).format("YYYY-MM-DD");
-
+  console.log(
+    `localTimeZone:: ${localTimeZone}, localTodayDate:: ${localTodayDate}`
+  );
   const [isLoading, setIsLoading] = useState(false);
 
   const router = useRouter();
@@ -177,6 +179,7 @@ const CreateEventForm = () => {
                       disabled={{ before: localTodayDate }}
                       // Set earliest month to current month so users cannot navigate to past months https://daypicker.dev/using-daypicker/navigation#disabling-navigation
                       fromMonth={localTodayDate}
+                      fromDate={new Date(2023, 9, 10)}
                       // Set default value of showOutsideDays to false
                     />
                   </FormControl>
