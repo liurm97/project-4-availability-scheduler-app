@@ -34,12 +34,13 @@ var timezone = require("dayjs/plugin/timezone");
 dayjs.extend(utc);
 dayjs.extend(timezone);
 
-const CreateEventForm = () => {
-  const localTimeZone = dayjs.tz.guess();
-  const localTodayDate = dayjs().tz(localTimeZone).format("YYYY-MM-DD");
-  console.log(
-    `localTimeZone:: ${localTimeZone}, localTodayDate:: ${localTodayDate}`
-  );
+const CreateEventForm = ({ dateToDisable }: { dateToDisable: Date }) => {
+  // const localTimeZone = dayjs.tz.guess();
+  // const localTodayDate = dayjs().tz(localTimeZone).format("YYYY-MM-DD");
+  // console.log(
+  //   `CreateEventForm:: localTimeZone:: ${localTimeZone}, localTodayDate:: ${localTodayDate}`
+  // );
+  console.log(`CreateEventForm:: dateToDisable:: ${dateToDisable}`);
   const [isLoading, setIsLoading] = useState(false);
 
   const router = useRouter();
@@ -176,10 +177,9 @@ const CreateEventForm = () => {
                       onSelect={field.onChange}
                       className="rounded-md border caret-transparent flex mx-auto justify-center"
                       // Disable past dates => pass Matcher prop https://daypicker.dev/next/api/type-aliases/Matcher
-                      disabled={{ before: localTodayDate }}
+                      disabled={{ before: dateToDisable }}
                       // Set earliest month to current month so users cannot navigate to past months https://daypicker.dev/using-daypicker/navigation#disabling-navigation
-                      fromMonth={localTodayDate}
-                      fromDate={new Date(2023, 9, 10)}
+                      fromMonth={dateToDisable}
                       // Set default value of showOutsideDays to false
                     />
                   </FormControl>
